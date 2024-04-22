@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:18:06 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/22 11:23:52 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/22 12:10:10 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ class ScalarConverter
 	public:
 		static	void	convert(const std::string &toConvert);
 		static	bool	isPseudoLiterals(const std::string &toConvert);	
+		static	void	typeConvert(const std::string &toConvert);
+		static	e_type	typeDetect(const std::string &toConvert);
+		static	void	charConvert(const std::string &toConvert);
 	
 	class nonDisplayableCharacters : public std::exception
 	{
