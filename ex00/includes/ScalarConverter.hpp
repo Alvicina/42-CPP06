@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:18:06 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/22 12:10:10 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:01:22 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <iomanip>
 
 class ScalarConverter
 {
@@ -37,6 +38,8 @@ class ScalarConverter
 		static	void	typeConvert(const std::string &toConvert);
 		static	e_type	typeDetect(const std::string &toConvert);
 		static	void	charConvert(const std::string &toConvert);
+		static	void	intConvert(const std::string &toConvert);
+		static	void	floatConvert(const std::string &toConvert);
 	
 	class nonDisplayableCharacters : public std::exception
 	{
@@ -49,7 +52,11 @@ class ScalarConverter
 		public:
 			virtual const char* what() const throw();
 	};
-	
+	class errorConversion : public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
 };
 
 #endif
