@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:18:11 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/22 18:00:49 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:15:56 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	ScalarConverter::typeConvert(const std::string &toConvert)
 			floatConvert(toConvert);
 			break ;
 		case DOUBLE:
-			//doubleConvert(toConvert);
+			doubleConvert(toConvert);
 			break ;
 		case NOTYPE:
 			throw invalidArgument();
@@ -133,7 +133,7 @@ ScalarConverter::e_type	ScalarConverter::typeDetect(const std::string &toConvert
 			throw invalidArgument();
 		else if (!isprint(toConvert[i]))
 			throw nonDisplayableCharacters();
-		else if (isdigit(toConvert[i]) && i == toConvert.length() - 1)
+		else if (isdigit(toConvert[i]) && i == toConvert.length() - 1 && point == 0)
 			return (INT);
 		else if (toConvert[i] == 'f' && toConvert.length() - 1 && point <= 1)
 			return (FLOAT);
@@ -208,18 +208,30 @@ void	ScalarConverter::floatConvert(const std::string &toConvert)
 	}
 }
 
-int		ScalarConverter::numberOfDec(const std::string &toConvert)
+void	ScalarConverter::doubleConvert(const std::string &toConvert)
 {
-	size_t	pos = toConvert.find(".");
-	int		decimals = 0;
-	if (pos != std::string::npos)
-	{
-		while (pos < toConvert.length())
-		{
-			pos++;
-			decimals++;
-		}
-	}
-	decimals = decimals - 1;
-	return (decimals);
+	char	*endptr;
+	double	temp = strtod(toConvert.c_str(), &endptr);
+
+	if (endptr == toConvert || *(endptr) != '\0')
+		throw errorConversion();
+	if (!isprint(static_cast<char>(temp)))
+		std::cout << "char  :not displayable" << std::endl;
+	else
+		std::cout << "char  :" << static_cast<char>(temp) << std::endl;
+	if (temp > std::numeric_limits<int>::max() || 
+		temp < std::numeric_limits<int>::min())
+			std::cout << "int   :not displayable" << std::endl;
+	else
+		std::cout << "int   :" << static_cast<int>(temp) << std::endl;
+	if (temp > std::numeric_limits<float>::max() ||
+		temp < -std::numeric_limits<float>::max())
+			std::cout << "float :not displayable" << std::endl;
+	else
+		std::cout << "float :" << temp << "f" << std::endl;
+	if (temp > std::numeric_limits<double>::max() ||
+		temp < -std::numeric_limits<double>::max())
+			std::cout << "double:not displayable" << std::endl;
+	else
+		std::cout << "double:" << static_cast<double>(temp) << std::endl;
 }
