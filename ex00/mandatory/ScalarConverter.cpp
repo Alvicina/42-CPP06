@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:18:11 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/22 18:39:28 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:46:16 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,8 +205,16 @@ void	ScalarConverter::floatConvert(const std::string &toConvert)
 			std::cout << "float :not displayable" << std::endl;
 	else
 	{
-		std::cout << std::fixed << std::setprecision(decimal) << "float :" << temp << "f" << std::endl;
-		std::cout << std::fixed << std::setprecision(decimal) <<"double:" << static_cast<double>(temp) << std::endl;
+		if (pos >= 6)
+		{
+			std::cout << "float :" << temp << "f" << std::endl;
+			std::cout <<"double:" << static_cast<double>(temp) << std::endl;
+		}
+		else
+		{
+			std::cout << std::fixed << std::setprecision(decimal) << "float :" << temp << "f" << std::endl;
+			std::cout << std::fixed << std::setprecision(decimal) <<"double:" << static_cast<double>(temp) << std::endl;
+		}
 	}
 }
 
@@ -230,6 +238,8 @@ void	ScalarConverter::doubleConvert(const std::string &toConvert)
 {
 	char	*endptr;
 	double	temp = strtod(toConvert.c_str(), &endptr);
+	size_t	pos = toConvert.find(".");
+	int		decimal = getDecimals(toConvert, pos);
 
 	if (endptr == toConvert || *(endptr) != '\0')
 		throw errorConversion();
@@ -246,10 +256,21 @@ void	ScalarConverter::doubleConvert(const std::string &toConvert)
 		temp < -std::numeric_limits<float>::max())
 			std::cout << "float :not displayable" << std::endl;
 	else
-		std::cout << "float :" << temp << "f" << std::endl;
+	{
+		if (pos >= 6)
+			std::cout << "float :" << temp << "f" << std::endl;
+		else
+			std::cout << std::fixed << std::setprecision(decimal) << "float :" << temp << "f" << std::endl;
+	}
 	if (temp > std::numeric_limits<double>::max() ||
 		temp < -std::numeric_limits<double>::max())
 			std::cout << "double:not displayable" << std::endl;
 	else
-		std::cout << "double:" << static_cast<double>(temp) << std::endl;
+	{
+		if (pos >= 6)
+			std::cout << "double:" << static_cast<double>(temp) << std::endl;
+		else
+			std::cout << std::fixed << std::setprecision(decimal) <<"double:" << static_cast<double>(temp) << std::endl;
+	}
 }
+		
