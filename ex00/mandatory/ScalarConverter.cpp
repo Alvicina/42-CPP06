@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:18:11 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/22 18:15:56 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:39:28 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,8 @@ void	ScalarConverter::floatConvert(const std::string &toConvert)
 {
 	char	*endptr;
 	float	temp = strtof(toConvert.c_str(), &endptr);
+	size_t	pos = toConvert.find(".");
+	int		decimal = getDecimals(toConvert, pos) - 1;
 
 	if (endptr == toConvert || *(endptr + 1) != '\0')
 		throw errorConversion();
@@ -203,9 +205,25 @@ void	ScalarConverter::floatConvert(const std::string &toConvert)
 			std::cout << "float :not displayable" << std::endl;
 	else
 	{
-		std::cout << "float :" << temp << "f" << std::endl;
-		std::cout << "double:" << static_cast<double>(temp) << std::endl;
+		std::cout << std::fixed << std::setprecision(decimal) << "float :" << temp << "f" << std::endl;
+		std::cout << std::fixed << std::setprecision(decimal) <<"double:" << static_cast<double>(temp) << std::endl;
 	}
+}
+
+int		ScalarConverter::getDecimals(const std::string &toConvert, size_t pos)
+{
+	size_t decimals = 0;
+	
+	if (pos != std::string::npos)
+	{
+		while (pos < toConvert.length())
+		{
+			pos++;
+			decimals++;
+		}
+	}
+	decimals = decimals - 1;
+	return (decimals);
 }
 
 void	ScalarConverter::doubleConvert(const std::string &toConvert)

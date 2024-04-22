@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:18:06 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/22 18:02:50 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:34:50 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ class ScalarConverter
 		static	void	intConvert(const std::string &toConvert);
 		static	void	floatConvert(const std::string &toConvert);
 		static	void	doubleConvert(const std::string &toConvert);
+		static 	int		getDecimals(const std::string &toConvert, size_t pos);
 	
 	class nonDisplayableCharacters : public std::exception
 	{
