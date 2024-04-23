@@ -6,25 +6,25 @@
 #    By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 11:42:41 by alvicina          #+#    #+#              #
-#    Updated: 2024/04/23 12:22:44 by alvicina         ###   ########.fr        #
+#    Updated: 2024/04/23 12:46:27 by alvicina         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #SETUP
 
-NAME            = Serializer
+NAME            = RealType
 CC              = c++
 RM              = rm -rf
 FLAGS           = -Wall -Wextra -Werror -std=c++98 -g3
 
 #FILES AND PATH
 
-HEADER_SRCS = Serializer.hpp Data.hpp \
+HEADER_SRCS = Base.hpp A.hpp B.hpp C.hpp \
 		      
 HEADER_DIR  = includes/
 HEADER      = $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
-MPATH_SRCS  = main.cpp Serializer.cpp Data.cpp \
+MPATH_SRCS  = main.cpp Base.cpp A.cpp B.cpp C.cpp \
 
 MPATH_DIR   = mandatory/
 MPATH       = $(addprefix $(MPATH_DIR), $(MPATH_SRCS))
