@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 15:39:23 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/23 17:22:13 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/23 18:07:27 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,33 @@ void	identify(Base &p)
 		A &a = dynamic_cast <A &>(p);
 		std::cout << "A" << std::endl;
 		(void) a;
+		return ;
 	}
 	catch(const std::exception& e)
 	{
-	//	std::cerr << e.what() << std::endl;
+		//std::cerr << e.what() << std::endl;
 	}
 	try
 	{
 		B &b = dynamic_cast <B &>(p);
 		std::cout << "B" << std::endl;
 		(void) b;
+		return ;
 	}
 	catch(const std::exception& e)
 	{
-	//	std::cerr << e.what() << std::endl;
+		//std::cerr << e.what() << std::endl;
 	}
 	try
 	{
 		C &c = dynamic_cast <C &>(p);
 		std::cout << "C" << std::endl;
 		(void) c;
+		return ;
 	}
 	catch (const std::exception& e)
 	{
-	//	std::cerr << e.what() << std::endl;
+		//std::cerr << e.what() << std::endl;
 	}
 }
 
