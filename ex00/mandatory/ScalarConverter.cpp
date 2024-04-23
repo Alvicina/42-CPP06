@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:18:11 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/22 18:46:16 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/23 10:30:46 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,9 @@ ScalarConverter::e_type	ScalarConverter::typeDetect(const std::string &toConvert
 			return (INT);
 		else if (toConvert[i] == 'f' && toConvert.length() - 1 && point <= 1)
 			return (FLOAT);
-		else if ((isdigit(toConvert[i]) && i == toConvert.length() - 1 && point == 1)
-		|| (i == toConvert.length() - 1 && toConvert[i] == '.'))
+		else if ((isdigit(toConvert[i]) && i == toConvert.length() - 1 && point == 1))
+			return (DOUBLE);
+		if (i == toConvert.length() - 1 && toConvert[i] == '.')
 			return (DOUBLE);
 		i++;
 	}
