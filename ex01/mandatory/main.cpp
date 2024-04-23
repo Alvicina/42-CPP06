@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:40:12 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/23 12:06:57 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/23 12:22:13 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	main(void)
 	Data		*ptrNew;
 
 	std::cout << " ------- using &prt ------- " << std::endl;
-	ptr.age = 34;
-	ptr.name = "Alejandro";
-	std::cout << "Data age:" << ptr.age << std::endl;
-	std::cout << "Data name:"<< ptr.name << std::endl;
+	ptr.setAge(34);
+	ptr.setName("Alejandro");
+	std::cout << "Data age:" << ptr.getAge() << std::endl;
+	std::cout << "Data name:"<< ptr.getName() << std::endl;
 	std::cout << "ptr address:" << &ptr << std::endl;
 	std::cout << std::endl;
 	
@@ -34,8 +34,8 @@ int	main(void)
 
 	std::cout << " ------- using newPtr ------- " << std::endl;
 	ptrNew = Serializer::deserialize(raw);
-	std::cout << "Data age:" << ptrNew->age << std::endl;
-	std::cout << "Data name:"<< ptrNew->name << std::endl;
+	std::cout << "Data age:" << ptrNew->getAge() << std::endl;
+	std::cout << "Data name:"<< ptrNew->getName() << std::endl;
 	std::cout << "ptr address:" << &ptr << std::endl;
 	std::cout << "ptrNew address:" << ptrNew << std::endl;
 	return (EXIT_SUCCESS);

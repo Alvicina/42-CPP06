@@ -6,7 +6,7 @@
 /*   By: alvicina <alvicina@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:48:45 by alvicina          #+#    #+#             */
-/*   Updated: 2024/04/23 11:40:03 by alvicina         ###   ########.fr       */
+/*   Updated: 2024/04/23 12:26:00 by alvicina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Serializer::~Serializer()
 
 Serializer::Serializer(const Serializer &a)
 {
+	std::cout << "Serializer copy constructor called" << std::endl;
 	*this = a;
 }
 
